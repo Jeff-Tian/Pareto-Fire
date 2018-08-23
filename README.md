@@ -14,7 +14,7 @@
 因为票据对应真实的交易。
 
 ## 交易场景
-![交易流程示意图(https://www.draw.io/)](./assets/images/transaction-flowchart.svg)
+![交易流程示意图(https://www.draw.io/)](./assets/images/online-factoring.png)
 
 ## 为什么能四方多赢？
 - *买方*：票据买方，因为购买了卖方产品或者使用了卖方服务，需要向卖方付款，有比较大的资金压力。通过这个平台融资，将付款到期日要一次性付清的巨额款项，分解为分期小额还款，减轻了资金压力。
