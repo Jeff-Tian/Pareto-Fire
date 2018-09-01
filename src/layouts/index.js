@@ -2,16 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import 'semantic-ui-css/semantic.min.css'
+import Link from 'gatsby-link'
 
 import ParetoHeader from '../components/header'
 import './index.css'
 import { Container, Icon, Menu } from 'semantic-ui-react'
 
 const activeItem = '发布借款'
-const handleClick = () => {
-  alert(arguments)
-  console.log(arguments)
-}
+
 const Layout = ({ children, data }) => (
   <div>
     <Helmet
@@ -25,14 +23,14 @@ const Layout = ({ children, data }) => (
     <Container>
       {children()}
       <Menu tabular fluid widths={3} icon="labeled" fixed="bottom">
-        <Menu.Item name="借款历史" active={activeItem === '借款历史'} onClick={handleClick}>
+        <Menu.Item as={Link} name="借款历史" active={activeItem === '借款历史'} to="/history">
           <Icon name="history"/>
           借款历史
         </Menu.Item>
-        <Menu.Item name="发布借款" active={activeItem === '借款历史'} onClick={handleClick}>
+        <Menu.Item as={Link} name="发布借款" active={activeItem === '借款历史'} to="/new">
           <Icon name="add circle"/>
           发布借款</Menu.Item>
-        <Menu.Item name="设置" active={activeItem === '借款历史'} onClick={handleClick}>
+        <Menu.Item as={Link} name="设置" active={activeItem === '借款历史'} to="/settings">
           <Icon name="settings"/>
           设置
         </Menu.Item>
