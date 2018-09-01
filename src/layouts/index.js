@@ -27,7 +27,7 @@ const Layout = ({ children, data }) => (
           <Icon name="history"/>
           借款历史
         </Menu.Item>
-        <Menu.Item as={Link} name="发布借款" active={activeItem === '借款历史'} to="/new">
+        <Menu.Item as={Link} name="发布借款" active={activeItem === '借款历史'} to="/">
           <Icon name="add circle"/>
           发布借款</Menu.Item>
         <Menu.Item as={Link} name="设置" active={activeItem === '借款历史'} to="/settings">

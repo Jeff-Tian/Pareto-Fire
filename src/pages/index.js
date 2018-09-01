@@ -1,6 +1,11 @@
 import * as React from 'react'
 import { Button, Form, Input } from 'semantic-ui-react'
 
+const encode = (data) => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
+}
 export default class NewLoan extends React.Component {
   state = {
     howMuch: '',
@@ -12,11 +17,24 @@ export default class NewLoan extends React.Component {
       [name]: value,
     })
   }
+  publishNewLoan = async (event) => {
+    event.preventDefault()
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({ 'form-name': 'loan', ...this.state }),
+      })
+
+      alert('发布成功')
+    } catch (ex) {
+      console.error(ex)
+    }
+  }
 
   render() {
-    return <Form name="loan" method="POST" data-netlify="true" data-netlify-honeypot="bot-field"
-                 onSubmit={this.publishNewLoan}
-                 action="">
+    return <Form name="loan" data-netlify="true" data-netlify-honeypot="bot-field"
+                 onSubmit={this.publishNewLoan}>
       <Form.Group widths='equal'>
         <p style={{ display: 'none' }}>
           <label>Don’t fill this out if you're human: <input name="bot-field"/></label>
@@ -55,10 +73,5 @@ export default class NewLoan extends React.Component {
         content='发布需求'
       />
     </Form>
-  }
-
-  async publishNewLoan() {
-    alert('thank you')
-    // await window.fetch()
   }
 }
