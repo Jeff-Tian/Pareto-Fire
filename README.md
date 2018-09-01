@@ -1,73 +1,106 @@
-# 帕累托火焰 - 集成了科技金融的线上保理业务交易平台
-## 这是什么？
+<p align="center">
+  <a href="https://next.gatsbyjs.org">
+    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
+  </a>
+</p>
+<h1 align="center">
+  Gatsby's default starter
+</h1>
 
-将保理业务搬到线上，本质上是一个票据的交易市场，给买方、卖方、融资方以及科技提供商提供了在线交易和多赢的机会。对票据买方来说，减轻了资金压力；对票据卖方来说，可以缩短应收账款周期；对融资方来说，可以赚取利息；对于科技提供商，可以把原先的成本部门变成创收部门。
+Kick off your project with this default boilerplate. This barebones starter ships with the main Gatsby configuration files you might need. 
 
-## 特点
-- 用户的钱不通过平台中转，规避法律风险
-- 票据真实性得到保证（汉特平台）
-- 应用区块链技术，保证每一次交易可跟踪、防篡改
-- 应用 AI 技术，智能风控
+_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://next.gatsbyjs.org/docs/gatsby-starters/)._
 
+## 🚀 Quick start
 
-## 这不是 P2P
-因为票据对应真实的交易。
+1.  **Install the Gatsby CLI.**
 
-## 交易场景
-![交易流程示意图(https://www.draw.io/)](./assets/images/online-factoring.png)
+    The Gatsby CLI helps you create new sites using Gatsby starters (like this one!)
 
-## 为什么能四方多赢？
-- *买方*：票据买方，因为购买了卖方产品或者使用了卖方服务，需要向卖方付款，有比较大的资金压力。通过这个平台融资，将付款到期日要一次性付清的巨额款项，分解为分期小额还款，减轻了资金压力。
-- *卖方*：票据卖方，即产品或者服务提供者。一般来说，卖方需要在 90 
-天或者更长的应收账款周期内才能收到应收账款，通过此平台融资方给买方提供的贷款服务，卖方可以立即收到款项，大大提高了资金周转率。
-- *融资方*：融资方可以赚取利息，同时由于票据的真实性保证、AI 和区块链技术的应用，可以使得风控成本相对较低。
-- *科技提供方*：企业里科技的研究和开发部门，一般都是成本部门。而通过在此平台，允许企业出售其技术服务，使得研发部门也能创收。
+    ```sh
+    # install the Gatsby CLI globally
+    npm install -g gatsby-cli
+    ```
 
-## 传统保理业务介绍
-保理业务是从出口代理交易方式演变而来的，起源于14
-世纪英国毛纺工业。当时英国毛纺织品是在寄售基础上委托专业代理商代销的。这些代理商向国外买主出售商品，同时向出口商担保买主的商业信用。当时由于交通不便，外贸业务往来活动比较缓慢。如果在国外没有可靠的代理人进行协助，任何出口企业很难取得成功。到18世纪，美国的一些代理商逐步以其高度效率和雄厚资金掌握了为扩大其国内市场所需要的代贷管理工作。他们的地位也逐步由以前被委托的代理人身分演变为独立的经济实体——保理商。保理商根据保理合同专门为有关商业企业提供信贷和信用管理服务。经过不断地发展，现代保理商已能提供一揽子服务，包括*向卖方提供买方资信调查*，*100%货款商业风险担保*，*应收账款管理*和*资金融通*等。据介绍，1990年国际保理业务营业额已达到137亿美元。不仅发达国家中有保理公司开展国际业务，一些发展中国家，如墨西哥、东盟、匈牙利等也都有保理公司为其本国进出口贸易提供服务。
+2.  **Create a Gatsby site.**
 
-## 保理服务项目
-保理又称保付代理、托收保付，是贸易中以托收、赊销方式结算贷款时，出口方为了规避收款风险而采用的一种请求第三者（保理商）承担风险的做法。保理业务是一项集贸易融资、商业资信调查、应收账款管理及信用风险承担于一体的综合性金融服务。与传统结算方式相比，保理的优势主要在于融资功能。保理商为其提供下列服务中的至少两项：
+    Use the Gatsby CLI to create a new site, specifying the default starter.
 
-- *贸易融资*
+    ```sh
+    # create a new Gatsby site using the default starter
+    gatsby new my-default-starter
+    ```
 
-保理商可以根据卖方的资金需求，收到转让的应收账款后，立刻对卖方提供融资，协助卖方解决流动资金短缺问题。
+3.  **Start developing.**
 
-- *销售分户账管理*
+    Navigate into your new site’s directory and start it up.
 
-保理商可以根据卖方的要求，定期向卖方提供应收账款的回收情况、逾期账款情况、账龄分析等，发送各类对账单，协助卖方进行销售管理。
+    ```sh
+    cd my-default-starter/
+    gatsby develop
+    ```
 
-- *应收账款的催收*
+4.  **Open the source code and start editing!**
 
-保理商有专业人士从事追收，他们会根据应收账款逾期的时间采取有理、有力、有节的手段，协助卖方安全回收账款。
-
-- *信用风险控制与坏账担保*
-
-保理商可以根据卖方的需求为买方核定信用额度，对于卖方在信用额度内发货所产生的应收账款，保理商提供100%的坏账担保。
-
-
-## 平台相对于传统保理业务的优势
-- 效率的提高
-- 信息的透明
-- 风控成本降低
-
-## 项目盈利方式
-用户不充值到平台，点对点交易。在交易过程中，平台收取 1% 到 2% 的手续费。表现形式为，融资方提供贷款方案时，其设置的利率在票据买方展示时，会被加 1% 到 2%。比如融资方设置 4%，展示给买方时会是 5% 或者 6%。
-
-## 项目的架构 
-- 前端：
-    - h5 
-    - ios app
-    - android app
+    Your site is now running at `http://localhost:8000`!
     
-    采用 react js 前端框架，同时以 hybrid app 形式打包到 ios 和 android。
+    *Note: You'll also see a second link: `http://localhost:8000___graphql`. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://next.gatsbyjs.org/tutorial/part-five/#introducing-graphiql).*
     
-- 后端：
-    - API 网关
-    - 调用汉特服务(http://hitpointsolution.com/cn/)验证票据真实性
-    - 区块链技术
-    - AI 技术
+    Open the the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
     
-    采用 nodejs，对接第三方 API。使用 Solidate 基于以太坊做区块链开发。AI 技术方面会采用 python 开发。
+## 🧐 What's inside?
 
+A quick look at the top-level files and directories you'll see in a Gatsby project.
+
+    .
+    ├── node_modules
+    ├── src
+    ├── .gitignore
+    ├── .prettierrc
+    ├── gatsby-browser.js
+    ├── gatsby-config.js
+    ├── gatsby-node.js
+    ├── gatsby-ssr.js
+    ├── LICENSE
+    ├── package-lock.json
+    ├── package.json
+    ├── README.md
+    └── yarn.lock
+
+  1.  **`/node_modules`**: The directory where all of the modules of code that your project depends on (npm packages) are automatically installed.  
+  
+  2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser), like your site header, or a page template. “Src” is a convention for “source code”.
+  
+  3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+  
+  4.  **`.prettierrc`**: This is a configuration file for a tool called [Prettier](https://prettier.io/), which is a tool to help keep the formatting of your code consistent.
+  
+  5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://next.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+  
+  6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://next.gatsbyjs.org/docs/gatsby-config/) for more detail).
+  
+  7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby node APIs](https://next.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+  
+  8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://next.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+  
+  9.  **`LICENSE`**: Gatsby is licensed under the MIT license.
+  
+  10.  **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. (You won’t change this file directly).
+  
+  11.  **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+  
+  12.  **`README.md`**: A text file containing useful reference information about your project.
+  
+  13.  **`yarn.lock`**: [Yarn](https://yarnpkg.com/) is a package manager alternative to npm. You can use either yarn or npm, though all of the Gatsby docs reference npm.  This file serves essentially the same purpose as `package-lock.json`, just for a different package management system.
+
+## 🎓 Learning Gatsby
+
+Looking for more guidance? Full documentation for Gatsby lives [on the website](https://next.gatsbyjs.org/). Here are some places to start:
+
+-   **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://next.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
+
+-   **To dive straight into code samples head [to our documentation](https://next.gatsbyjs.org/docs/).** In particular, check out the “Guides”, API reference, and “Advanced Tutorials” sections in the sidebar.
+
+## 💫 Deploy
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
