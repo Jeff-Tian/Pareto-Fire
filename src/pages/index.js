@@ -17,6 +17,7 @@ export default class NewLoan extends React.Component {
     this.state = {
       howMuch: '',
       howLong: '',
+      refundMethod: '',
     }
   }
 
@@ -64,6 +65,15 @@ export default class NewLoan extends React.Component {
           label='借多久'
           placeholder='24 月'
           value={this.state.howLong}
+          onChange={this.handleChange}
+        />
+        <Form.Field
+          id='form-input-control-refund'
+          control={Input}
+          name="refundMethod"
+          label="怎么还"
+          placeholder="等额本息"
+          value={this.state.refundMethod}
           onChange={this.handleChange}
         />
       </Form.Group>
