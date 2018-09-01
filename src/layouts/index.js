@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import 'semantic-ui-css/semantic.min.css'
 
-import Header from '../components/header'
+import ParetoHeader from '../components/header'
 import './index.css'
 import { Container, Icon, Menu } from 'semantic-ui-react'
 
@@ -21,7 +21,7 @@ const Layout = ({ children, data }) => (
         { name: 'keywords', content: '信用贷款, 开放银行' },
       ]}
     />
-    <Header siteTitle={data.site.siteMetadata.title}/>
+    <ParetoHeader siteTitle={data.site.siteMetadata.title} subtitle={data.site.siteMetadata.subtitle}/>
     <Container>
       {children()}
       <Menu tabular fluid widths={3} icon="labeled" fixed="bottom">
@@ -51,7 +51,8 @@ export const query = graphql`
   query SiteTitleQuery {
     site {
       siteMetadata {
-        title
+        title,
+        subtitle
       }
     }
   }
