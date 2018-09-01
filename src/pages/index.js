@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Form, Input } from 'semantic-ui-react'
+import 'regenerator-runtime/runtime'
 
 const encode = (data) => {
   return Object.keys(data)
@@ -7,17 +8,25 @@ const encode = (data) => {
     .join('&')
 }
 export default class NewLoan extends React.Component {
-  state = {
-    howMuch: '',
-    howLong: '',
+  constructor(props) {
+    super(props)
+    this.publishNewLoan = this.publishNewLoan.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+
+
+    this.state = {
+      howMuch: '',
+      howLong: '',
+    }
   }
-  handleChange = (event, { name, value }) => {
-    console.log(name, value)
+
+  handleChange(event, { name, value }) {
     this.setState({
       [name]: value,
     })
   }
-  publishNewLoan = async (event) => {
+
+  async publishNewLoan(event) {
     event.preventDefault()
     try {
       await fetch('/', {
