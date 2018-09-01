@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-default",
-  "description": "Gatsby default starter",
+  "name": "pareto-fire",
+  "description": "基于开放银行的信用贷款平台",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Jeff Tian <jeff.tian@outlook.com>",
   "dependencies": {
     "gatsby": "^1.9.277",
     "gatsby-link": "^1.6.46",
@@ -26,6 +26,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/citi-fair/Pareto-Fire"
   }
 }
