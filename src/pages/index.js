@@ -1,6 +1,9 @@
 import React from 'react'
-import { Button, Form, Input } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
 import 'regenerator-runtime/runtime'
+import LoanStep1 from '../components/new-loan/LoanStep1'
+import LoanStep2 from '../components/new-loan/LoanStep2'
+import { push } from 'gatsby-link'
 
 const encode = (data) => {
   return Object.keys(data)
@@ -12,18 +15,34 @@ export default class NewLoan extends React.Component {
     super(props)
     this.publishNewLoan = this.publishNewLoan.bind(this)
     this.handleChange = this.handleChange.bind(this)
-
+    this.gotoNextStep = this.gotoNextStep.bind(this)
+    this.selectScheme = this.selectScheme.bind(this)
 
     this.state = {
       howMuch: '',
       howLong: '',
       refundMethod: '',
+      scheme: '',
+      step: 1,
     }
   }
 
   handleChange(event, { name, value }) {
     this.setState({
       [name]: value,
+    })
+  }
+
+  gotoNextStep(event) {
+    event.preventDefault()
+    this.setState({
+      step: this.state.step + 1,
+    })
+  }
+
+  selectScheme(scheme) {
+    this.setState({
+      scheme: scheme,
     })
   }
 
@@ -37,6 +56,7 @@ export default class NewLoan extends React.Component {
       })
 
       alert('发布成功')
+      push('/history')
     } catch (ex) {
       console.error(ex)
     }
@@ -45,52 +65,26 @@ export default class NewLoan extends React.Component {
   render() {
     return <Form name="loan" data-netlify="true" data-netlify-honeypot="bot-field"
                  onSubmit={this.publishNewLoan}>
-      <Form.Group widths='equal'>
-        <p style={{ display: 'none' }}>
-          <label>Don’t fill this out if you're human: <input name="bot-field"/></label>
-        </p>
+      <p style={{ display: 'none' }}>
+        <label>Don’t fill this out if you're human: <input name="bot-field"/></label>
+      </p>
+      {
+        this.state.step === 1 &&
+        <LoanStep1 howMuch={this.state.howMuch} howLong={this.state.howLong} refundMethod={this.state.refundMethod}
+                   handleChange={this.handleChange} gotoNextStep={this.gotoNextStep}/>
+      }
+      {
+        this.state.step === 2 &&
+        <LoanStep2 scheme={this.state.scheme} selectScheme={this.selectScheme}/>
+      }
+      {
+        this.state.step === 2 &&
         <Form.Field
-          id='form-input-control-how-much'
-          control={Input}
-          label='借多少'
-          placeholder='xxxx 元'
-          name="howMuch"
-          value={this.state.howMuch}
-          onChange={this.handleChange}
+          id='form-button-control-submit'
+          control={Button}
+          content='提交'
         />
-        <Form.Field
-          id='form-input-control-how-long'
-          control={Input}
-          name="howLong"
-          label='借多久'
-          placeholder='24 月'
-          value={this.state.howLong}
-          onChange={this.handleChange}
-        />
-        <Form.Field
-          id='form-input-control-refund'
-          control={Input}
-          name="refundMethod"
-          label="怎么还"
-          placeholder="等额本息"
-          value={this.state.refundMethod}
-          onChange={this.handleChange}
-        />
-      </Form.Group>
-      <Form.Field
-        id='form-upload'
-        name="files"
-        control={Input}
-        type="file"
-        multiple
-        label='上传票据'
-        placeholder='上传票据'
-      />
-      <Form.Field
-        id='form-button-control-public'
-        control={Button}
-        content='发布需求'
-      />
+      }
     </Form>
   }
 }

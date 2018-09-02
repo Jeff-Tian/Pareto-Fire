@@ -10,7 +10,9 @@
     "gatsby-plugin-react-helmet": "^2.0.11",
     "react-helmet": "^5.2.0",
     "semantic-ui-css": "^2.3.3",
-    "semantic-ui-react": "^0.82.3"
+    "semantic-ui-react": "^0.82.3",
+    "react": "latest",
+    "moment": "latest"
   },
   "keywords": [
     "gatsby"
