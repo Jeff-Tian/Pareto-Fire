@@ -47,9 +47,12 @@ export default class NewLoan extends React.Component {
   }
 
   async publishNewLoan(event) {
+    if (typeof window === 'undefined') {
+      return
+    }
     event.preventDefault()
     try {
-      await fetch('/', {
+      await window.fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encode({ 'form-name': 'loan', ...this.state }),
