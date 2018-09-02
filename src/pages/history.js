@@ -2,6 +2,7 @@ import React from 'react'
 import { Card } from 'semantic-ui-react'
 import 'regenerator-runtime/runtime'
 import moment from 'moment/moment'
+import Link from 'gatsby-link'
 
 class HistoryPage extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class HistoryPage extends React.Component {
   render() {
     return <Card.Group>
       {
-        this.state.history.map(s => <Card fluid color='red' header={s.summary} href="/"
+        this.state.history.map(s => <Card as={Link} fluid color='red' header={s.summary} to="/"
                                           meta={moment(s.created_at).fromNow()}
                                           description={s.id} key={s.id}>
         </Card>)
