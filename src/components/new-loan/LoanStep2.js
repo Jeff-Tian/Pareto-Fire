@@ -8,4 +8,11 @@ export default ({ selectScheme }) => <Card.Group>
         onClick={() => selectScheme('icbc')}/>
   <Card fluid color='yellow' header='中国银行 30 万' href="/" meta="2018年7月7日" description="点击查看更多"
         onClick={() => selectScheme('china')}/>
+
+  <Card fluid color='yellow' header='中国银行 30 万' href="/" meta="2018年7月7日" description="点击查看更多"
+        onClick={() => selectScheme('china')}/>
+
+
+  <Card fluid color='yellow' header='中国银行 30 万' href="/" meta="2018年7月7日" description="点击查看更多"
+        onClick={() => selectScheme('china')}/>
 </Card.Group>
