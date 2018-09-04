@@ -1,4 +1,4 @@
-import { Button, Form, Input } from 'semantic-ui-react'
+import { Button, Form, Icon, Input } from 'semantic-ui-react'
 import React from 'react'
 
 export default ({ howMuch, howLong, refundMethod, handleChange, gotoNextStep }) => <Form.Group widths='equal'>
@@ -41,7 +41,9 @@ export default ({ howMuch, howLong, refundMethod, handleChange, gotoNextStep }) 
   <Form.Field
     id='form-button-control-public'
     control={Button}
-    content='下一步'
+    color="red"
+    disabled={!howMuch || !howLong || !refundMethod}
     onClick={gotoNextStep}
-  />
+    icon labelPosition='right'
+  >下一步<Icon name='right arrow'/></Form.Field>
 </Form.Group>

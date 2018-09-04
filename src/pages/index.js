@@ -40,9 +40,13 @@ export default class NewLoan extends React.Component {
     })
   }
 
-  selectScheme(scheme) {
+  selectScheme(event, scheme) {
+    event.preventDefault()
+    event.stopPropagation()
+
     this.setState({
       scheme: scheme,
+      allowSubmit: true,
     })
   }
 
@@ -83,9 +87,11 @@ export default class NewLoan extends React.Component {
       {
         this.state.step === 2 &&
         <Form.Field
+          color="red"
           id='form-button-control-submit'
           control={Button}
           content='提交'
+          disabled={!this.state.allowSubmit}
         />
       }
     </Form>

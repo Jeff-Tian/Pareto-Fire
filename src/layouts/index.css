@@ -34,3 +34,22 @@ html, body, body > div {
 .flex-box .row.footer {
     flex: 0 1 auto;
 }
+
+.row.header .ui.attached.header {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.row.footer .ui.fluid.menu {
+    width: 100% !important;
+}
+
+.ui.tabular.menu .active.item {
+    margin-bottom: 0;
+}
+
+.row.header .ui.attached.header {
+    border-left: none;
+    border-right: none;
+    border-top: none;
+}

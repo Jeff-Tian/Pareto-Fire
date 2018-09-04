@@ -2,15 +2,15 @@ import { Icon, Menu } from 'semantic-ui-react'
 import Link from 'gatsby-link'
 import React from 'react'
 
-export default ({ activeItem }) => <Menu tabular fluid widths={3} icon="labeled">
-  <Menu.Item as={Link} name="借款历史" active={activeItem === '借款历史'} to="/history">
+export default () => <Menu tabular fluid widths={3} icon="labeled" inverted>
+  <Menu.Item as={Link} name="借款历史" active={window.location.pathname === '/history'} to="/history" color="red">
     <Icon name="history"/>
     借款历史
   </Menu.Item>
-  <Menu.Item as={Link} name="发布借款" active={activeItem === '借款历史'} to="/">
+  <Menu.Item as={Link} name="发布借款" active={window.location.pathname === '/'} to="/" color="red">
     <Icon name="add circle"/>
     发布借款</Menu.Item>
-  <Menu.Item as={Link} name="设置" active={activeItem === '借款历史'} to="/settings">
+  <Menu.Item as={Link} name="设置" active={window.location.pathname === '/settings'} to="/settings" color="red">
     <Icon name="settings"/>
     设置
   </Menu.Item>

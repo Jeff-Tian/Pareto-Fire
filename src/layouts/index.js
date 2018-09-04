@@ -8,8 +8,6 @@ import ParetoFooter from '../components/footer'
 import './index.css'
 import { Container } from 'semantic-ui-react'
 
-const activeItem = '发布借款'
-
 const Layout = ({ children, data }) => (
   <div className="flex-box">
     <div className="row header">
@@ -24,13 +22,13 @@ const Layout = ({ children, data }) => (
     </div>
     <div className="row content">
       <div>
-        <Container>
+        <Container style={{ paddingTop: '10px', paddingBottom: '10px' }}>
           {children()}
         </Container>
       </div>
     </div>
     <div className="row footer">
-      <ParetoFooter activeItem={activeItem}/>
+      <ParetoFooter/>
     </div>
   </div>
 )
