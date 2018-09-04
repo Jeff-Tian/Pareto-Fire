@@ -1,16 +1,16 @@
-import { Button, Form, Icon, Input } from 'semantic-ui-react'
+import { Button, Form, Icon, Input, Label } from 'semantic-ui-react'
 import React from 'react'
 
 export default ({ howMuch, howLong, refundMethod, handleChange, gotoNextStep }) => <Form.Group widths='equal'>
-  <Form.Field
-    id='form-input-control-how-much'
-    control={Input}
-    label='借多少'
-    placeholder='10000 元'
-    name="howMuch"
-    value={howMuch}
-    onChange={handleChange}
-  />
+  <Form.Field>
+    <label>借多少</label>
+    <Input labelPosition='right' type='number' placeholder='10000' name="howMuch" value={howMuch}
+           onChange={handleChange}>
+      <Label basic>￥</Label>
+      <input/>
+      <Label>.00 元</Label>
+    </Input>
+  </Form.Field>
   <Form.Field
     id='form-input-control-how-long'
     control={Input}
