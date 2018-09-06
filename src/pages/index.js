@@ -28,6 +28,14 @@ export default class NewLoan extends React.Component {
     }
   }
 
+  static checkUser() {
+    const user = netlifyIdentity.currentUser()
+    if (!user) {
+      netlifyIdentity.open()
+      netlifyIdentity.on('close', NewLoan.checkUser)
+    }
+  }
+
   handleChange(event, { name, value }) {
     this.setState({
       [name]: value,
@@ -76,10 +84,7 @@ export default class NewLoan extends React.Component {
       container: 'body', // defaults to document.body,
     })
 
-    const user = netlifyIdentity.currentUser()
-    if (!user) {
-      netlifyIdentity.open()
-    }
+    NewLoan.checkUser()
   }
 
   render() {
