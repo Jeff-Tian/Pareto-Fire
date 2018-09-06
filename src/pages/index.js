@@ -44,7 +44,6 @@ export default class NewLoan extends React.Component {
 
   gotoNextStep(event) {
     event.preventDefault()
-    console.log('this.state = ', this.state)
     this.setState({
       step: this.state.step + 1,
     })
@@ -69,7 +68,7 @@ export default class NewLoan extends React.Component {
       await window.fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'loan', ...this.state, user: netlifyIdentity.currentUser() }),
+        body: encode({ 'form-name': 'loan', ...this.state, userId: netlifyIdentity.currentUser().id }),
       })
 
       alert('发布成功')
