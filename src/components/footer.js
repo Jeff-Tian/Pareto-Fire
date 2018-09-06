@@ -5,7 +5,7 @@ import React from 'react'
 export default () => {
   const pathname = typeof window === 'undefined' ? '' : window.location.pathname
 
-  return <Menu tabular fluid widths={3} icon="labeled" inverted>
+  return <Menu compact tabular fluid widths={3} icon="labeled" inverted>
     <Menu.Item as={Link} name="借款历史" active={pathname === '/history'} to="/history" color="red">
       <Icon name="history"/>
       借款历史

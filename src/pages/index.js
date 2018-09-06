@@ -80,17 +80,7 @@ export default class NewLoan extends React.Component {
     const user = netlifyIdentity.currentUser()
     if (!user) {
       netlifyIdentity.open()
-    } else {
-      console.log('================', user.id, user)
     }
-    netlifyIdentity.on('init', user => {
-      console.log('init')
-      console.log(user)
-    })
-    netlifyIdentity.on('login', user => {
-      console.log('user = ', user)
-      console.log(user)
-    })
   }
 
   render() {
