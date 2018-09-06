@@ -35,6 +35,7 @@ export default class NewLoan extends React.Component {
 
   gotoNextStep(event) {
     event.preventDefault()
+    console.log('this.state = ', this.state)
     this.setState({
       step: this.state.step + 1,
     })
