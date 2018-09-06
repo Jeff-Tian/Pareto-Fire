@@ -5,6 +5,8 @@ import LoanStep1 from '../components/new-loan/LoanStep1'
 import LoanStep2 from '../components/new-loan/LoanStep2'
 import { push } from 'gatsby-link'
 
+const netlifyIdentity = require('netlify-identity-widget')
+
 const encode = (data) => {
   return Object.keys(data)
     .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
@@ -60,7 +62,7 @@ export default class NewLoan extends React.Component {
       await window.fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'loan', ...this.state }),
+        body: encode({ 'form-name': 'loan', ...this.state, user: netlifyIdentity.currentUser() }),
       })
 
       alert('发布成功')
@@ -68,6 +70,27 @@ export default class NewLoan extends React.Component {
     } catch (ex) {
       console.error(ex)
     }
+  }
+
+  componentWillMount() {
+    netlifyIdentity.init({
+      container: 'body', // defaults to document.body,
+    })
+
+    const user = netlifyIdentity.currentUser()
+    if (!user) {
+      netlifyIdentity.open()
+    } else {
+      console.log('================', user.id, user)
+    }
+    netlifyIdentity.on('init', user => {
+      console.log('init')
+      console.log(user)
+    })
+    netlifyIdentity.on('login', user => {
+      console.log('user = ', user)
+      console.log(user)
+    })
   }
 
   render() {
