@@ -1,11 +1,10 @@
 import React from 'react'
 import { Container } from 'semantic-ui-react'
 import { push } from 'gatsby-link'
-
-const netlifyIdentity = require('netlify-identity-widget')
+import netlifyIdentity from 'netlify-identity-widget'
 
 export default class Settings extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     netlifyIdentity.init({
       container: 'body', // defaults to document.body,
     })

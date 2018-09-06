@@ -9,3 +9,12 @@ exports.modifyBabelrc = ({ babelrc }) => ({
   ...babelrc,
   plugins: babelrc.plugins.concat(['transform-regenerator']),
 })
+
+exports.modifyWebpackConfig = ({ config, stage }) => {
+  if (stage === 'build-html') {
+    config.loader('null', {
+      test: /netlify-identity-widget/,
+      loader: 'null-loader',
+    })
+  }
+}

@@ -4,8 +4,7 @@ import 'regenerator-runtime/runtime'
 import LoanStep1 from '../components/new-loan/LoanStep1'
 import LoanStep2 from '../components/new-loan/LoanStep2'
 import { push } from 'gatsby-link'
-
-const netlifyIdentity = require('netlify-identity-widget')
+import netlifyIdentity from 'netlify-identity-widget'
 
 const encode = (data) => {
   return Object.keys(data)
@@ -72,7 +71,7 @@ export default class NewLoan extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     netlifyIdentity.init({
       container: 'body', // defaults to document.body,
     })
