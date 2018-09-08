@@ -1,6 +1,10 @@
 import { Button, Form, Icon, Input, Label, Select } from 'semantic-ui-react'
 import React from 'react'
 
+function isBlank(value) {
+  return value === '' || value === null
+}
+
 export default ({ howMuch, howLong, refundMethod, files, handleChange, gotoNextStep }) => <Form.Group widths='equal'>
   <Form.Field>
     <label>借多少</label>
@@ -59,7 +63,7 @@ export default ({ howMuch, howLong, refundMethod, files, handleChange, gotoNextS
     id='form-button-control-public'
     control={Button}
     color="red"
-    disabled={!howMuch || !howLong || !refundMethod}
+    disabled={isBlank(howMuch) || isBlank(howLong) || isBlank(refundMethod)}
     onClick={gotoNextStep}
     icon labelPosition='right'
   >下一步<Icon name='right arrow'/></Form.Field>
