@@ -55,7 +55,7 @@ export default ({ howMuch, howLong, refundMethod, files, scheme, handleChange, g
   />
   <Form.Field
     id='form-file-upload'
-    name="files[]"
+    name="files[0]"
     control={Input}
     type="file"
     label='上传票据'
@@ -63,7 +63,7 @@ export default ({ howMuch, howLong, refundMethod, files, scheme, handleChange, g
     onChange={handleChange}
   />
   <Form.Field
-    name="files[]"
+    name="files[1]"
     control={Input}
     type="file"
     label='上传票据'
@@ -71,23 +71,6 @@ export default ({ howMuch, howLong, refundMethod, files, scheme, handleChange, g
     onChange={handleChange}
   />
 
-  <Form.Field
-    name="files"
-    control={Input}
-    type="file"
-    label='上传票据'
-    placeholder='上传票据'
-    onChange={handleChange}
-  />
-
-  <Form.Field
-    name="files"
-    control={Input}
-    type="file"
-    label='上传票据'
-    placeholder='上传票据'
-    onChange={handleChange}
-  />
   <Form.Field>
     <ImagePreview images={files} deleteImage={deleteImage}/>
   </Form.Field>

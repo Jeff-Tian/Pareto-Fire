@@ -10,7 +10,7 @@ const encode = (data) => {
   const formData = new FormData()
   Object.keys(data)
     .map(key => {
-      if (key === 'files[]' || key === 'files') {
+      if (key.startsWith('files[')) {
         for (const file of data[key]) {
           formData.append(key, file, file.name)
         }
@@ -18,6 +18,7 @@ const encode = (data) => {
         formData.append(key, data[key])
       }
     })
+  console.log('form data = ', formData)
   return formData
 }
 export default class NewLoan extends React.Component {
@@ -33,7 +34,6 @@ export default class NewLoan extends React.Component {
       howMuch: '',
       howLong: '',
       refundMethod: '',
-      'files[]': [],
       files: [],
       scheme: '',
       step: 1,
@@ -49,13 +49,13 @@ export default class NewLoan extends React.Component {
   }
 
   handleChange(event, { name, value }) {
-    if (name !== 'files[]' && name !== 'files') {
+    if (!name.startsWith('files[')) {
       this.setState({
         [name]: value,
       })
     } else {
       this.setState({
-        [name]: [
+        files: [
           ...this.state[name], ...(Array.from(event.target.files).filter(f => this.state[name].map(f => f.name).indexOf(f.name) < 0)),
         ],
       })
@@ -64,7 +64,7 @@ export default class NewLoan extends React.Component {
 
   deleteImage(img) {
     this.setState({
-      'files[]': this.state.files.filter(f => f !== img),
+      'files': this.state.files.filter(f => f !== img),
     })
   }
 
@@ -127,7 +127,7 @@ export default class NewLoan extends React.Component {
       {
         this.state.step === 1 &&
         <LoanStep1 howMuch={this.state.howMuch} howLong={this.state.howLong} refundMethod={this.state.refundMethod}
-                   files={this.state['files[]']}
+                   files={this.state['files']}
                    scheme={this.state.scheme}
                    deleteImage={this.deleteImage}
                    handleChange={this.handleChange} gotoNextStep={this.gotoNextStep}/>
