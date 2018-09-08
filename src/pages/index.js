@@ -13,13 +13,12 @@ const encode = (data) => {
       if (key === 'files') {
         let i = 0
         for (const file of data[key]) {
-          formData.append(`${key}[${i++}]`, file, file.name)
+          formData.append(`${key}_${i++}`, file, file.name)
         }
       } else {
         formData.append(key, data[key])
       }
     })
-  console.log('form data = ', formData)
   return formData
 }
 export default class NewLoan extends React.Component {

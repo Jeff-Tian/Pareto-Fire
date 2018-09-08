@@ -55,7 +55,7 @@ export default ({ howMuch, howLong, refundMethod, files, scheme, handleChange, g
   />
   <Form.Field
     id='form-file-upload'
-    name="files[0]"
+    name="files_0"
     control={Input}
     type="file"
     label='上传票据'
@@ -63,7 +63,7 @@ export default ({ howMuch, howLong, refundMethod, files, scheme, handleChange, g
     onChange={handleChange}
   />
   <Form.Field
-    name="files[1]"
+    name="files_1"
     control={Input}
     type="file"
     label='上传票据'
@@ -72,7 +72,7 @@ export default ({ howMuch, howLong, refundMethod, files, scheme, handleChange, g
   />
 
   <Form.Field
-    name="files"
+    name="files_2"
     control={Input}
     type="file"
     label='上传票据'
