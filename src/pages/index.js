@@ -50,14 +50,14 @@ export default class NewLoan extends React.Component {
   }
 
   handleChange(event, { name, value }) {
-    if (!name.startsWith('files[')) {
+    if (!name.startsWith('files')) {
       this.setState({
         [name]: value,
       })
     } else {
       this.setState({
         files: [
-          ...this.state[name], ...(Array.from(event.target.files).filter(f => this.state[name].map(f => f.name).indexOf(f.name) < 0)),
+          ...this.state['files'], ...(Array.from(event.target.files).filter(f => this.state['files'].map(f => f.name).indexOf(f.name) < 0)),
         ],
       })
     }
