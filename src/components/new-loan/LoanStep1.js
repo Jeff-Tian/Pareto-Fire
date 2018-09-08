@@ -1,6 +1,7 @@
 import { Button, Form, Icon, Input, Label, Select } from 'semantic-ui-react'
 import React from 'react'
 import ImagePreview from '../ImagePreview'
+import FileSelect from './FileSelect'
 
 function isBlank(value) {
   return value === '' || value === null
@@ -53,33 +54,7 @@ export default ({ howMuch, howLong, refundMethod, files, scheme, handleChange, g
       key: 2, text: '先息后本', value: 2,
     }]}
   />
-  <Form.Field
-    id='form-file-upload'
-    name="files_0"
-    control={Input}
-    type="file"
-    label='上传票据'
-    placeholder='上传票据'
-    onChange={handleChange}
-  />
-  <Form.Field
-    name="files_1"
-    control={Input}
-    type="file"
-    label='上传票据'
-    placeholder='上传票据'
-    onChange={handleChange}
-  />
-
-  <Form.Field
-    name="files_2"
-    control={Input}
-    type="file"
-    label='上传票据'
-    placeholder='上传票据'
-    onChange={handleChange}
-  />
-
+  <FileSelect files={files} indices={[0, 1, 2, 3, 4, 5, 6, 7, 8]} handleChange={handleChange}/>
   <Form.Field>
     <ImagePreview images={files} deleteImage={deleteImage}/>
   </Form.Field>
