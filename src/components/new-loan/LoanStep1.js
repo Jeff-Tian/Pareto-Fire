@@ -5,18 +5,9 @@ function isBlank(value) {
   return value === '' || value === null
 }
 
-export default ({ howMuch, howLong, refundMethod, test, files, handleChange, gotoNextStep }) => <Form.Group
+export default ({ howMuch, howLong, refundMethod, files, scheme, handleChange, gotoNextStep }) => <Form.Group
   widths='equal'>
-
-  <Form.Field
-    id='form-input-control-how-long'
-    control={Input}
-    name="test"
-    label='fuck'
-    placeholder='24 月'
-    value={test}
-    onChange={handleChange}
-  />
+  <input type="hidden" name="userId"/>
   <Form.Field>
     <label>借多少</label>
     <Input labelPosition='right' type='number' placeholder='10000' name="howMuch" value={howMuch}
@@ -26,6 +17,7 @@ export default ({ howMuch, howLong, refundMethod, test, files, handleChange, got
       <Label>.00 元</Label>
     </Input>
   </Form.Field>
+  <input type="hidden" name="howLong" value={howLong}/>
   <Form.Field
     id='form-input-control-how-long'
     control={Select}
@@ -44,6 +36,7 @@ export default ({ howMuch, howLong, refundMethod, test, files, handleChange, got
       { key: 60, text: '五年', value: 60 },
     ]}
   />
+  <input type="hidden" name="refundMethod" value={refundMethod}/>
   <Form.Field
     id='form-input-control-refund'
     control={Select}
@@ -70,6 +63,7 @@ export default ({ howMuch, howLong, refundMethod, test, files, handleChange, got
     placeholder='上传票据'
     onChange={handleChange}
   />
+  <input type="hidden" name="scheme" value={scheme}/>
   <Form.Field
     id='form-button-control-public'
     control={Button}
