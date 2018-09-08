@@ -81,6 +81,7 @@ export default class NewLoan extends React.Component {
     }
     event.preventDefault()
     try {
+      this.setState({ loading: true })
       await window.fetch('/', {
         method: 'POST',
         body: encode({ 'form-name': 'loan', ...this.state, userId: netlifyIdentity.currentUser().id }),
@@ -90,6 +91,8 @@ export default class NewLoan extends React.Component {
       push('/history')
     } catch (ex) {
       console.error(ex)
+    } finally {
+      this.setState({ loading: false })
     }
   }
 
@@ -102,7 +105,7 @@ export default class NewLoan extends React.Component {
   }
 
   render() {
-    return <Form name="loan" data-netlify="true" data-netlify-honeypot="bot-field"
+    return <Form name="loan" data-netlify="true" data-netlify-honeypot="bot-field" loading={this.state.loading}
                  onSubmit={this.publishNewLoan}>
       <p style={{ display: 'none' }}>
         <label>Don’t fill this out if you're human: <input name="bot-field"/></label>
