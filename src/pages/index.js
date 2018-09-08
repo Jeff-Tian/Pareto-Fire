@@ -55,7 +55,7 @@ export default class NewLoan extends React.Component {
     } else {
       this.setState({
         [name]: [
-          ...this.state.files, ...Array.from(event.target.files.filter(f => this.state.files.indexOf(f) < 0)),
+          ...this.state.files, ...(Array.from(event.target.files).filter(f => this.state.files.map(f => f.name).indexOf(f.name) < 0)),
         ],
       })
     }
