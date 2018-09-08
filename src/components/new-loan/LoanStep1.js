@@ -5,7 +5,18 @@ function isBlank(value) {
   return value === '' || value === null
 }
 
-export default ({ howMuch, howLong, refundMethod, files, handleChange, gotoNextStep }) => <Form.Group widths='equal'>
+export default ({ howMuch, howLong, refundMethod, test, files, handleChange, gotoNextStep }) => <Form.Group
+  widths='equal'>
+
+  <Form.Field
+    id='form-input-control-how-long'
+    control={Input}
+    name="test"
+    label='fuck'
+    placeholder='24 月'
+    value={test}
+    onChange={handleChange}
+  />
   <Form.Field>
     <label>借多少</label>
     <Input labelPosition='right' type='number' placeholder='10000' name="howMuch" value={howMuch}

@@ -32,6 +32,7 @@ export default class NewLoan extends React.Component {
       howMuch: '',
       howLong: '',
       refundMethod: '',
+      test: '',
       files: [],
       scheme: '',
       step: 1,
@@ -114,6 +115,7 @@ export default class NewLoan extends React.Component {
         this.state.step === 1 &&
         <LoanStep1 howMuch={this.state.howMuch} howLong={this.state.howLong} refundMethod={this.state.refundMethod}
                    files={this.state.files}
+                   test={this.state.test}
                    handleChange={this.handleChange} gotoNextStep={this.gotoNextStep}/>
       }
       {
