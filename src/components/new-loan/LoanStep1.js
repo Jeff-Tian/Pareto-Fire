@@ -70,6 +70,24 @@ export default ({ howMuch, howLong, refundMethod, files, scheme, handleChange, g
     placeholder='上传票据'
     onChange={handleChange}
   />
+
+  <Form.Field
+    name="files"
+    control={Input}
+    type="file"
+    label='上传票据'
+    placeholder='上传票据'
+    onChange={handleChange}
+  />
+
+  <Form.Field
+    name="files"
+    control={Input}
+    type="file"
+    label='上传票据'
+    placeholder='上传票据'
+    onChange={handleChange}
+  />
   <Form.Field>
     <ImagePreview images={files} deleteImage={deleteImage}/>
   </Form.Field>

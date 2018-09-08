@@ -10,7 +10,7 @@ const encode = (data) => {
   const formData = new FormData()
   Object.keys(data)
     .map(key => {
-      if (key === 'files[]') {
+      if (key === 'files[]' || key === 'files') {
         for (const file of data[key]) {
           formData.append(key, file, file.name)
         }
@@ -34,6 +34,7 @@ export default class NewLoan extends React.Component {
       howLong: '',
       refundMethod: '',
       'files[]': [],
+      files: [],
       scheme: '',
       step: 1,
     }
@@ -48,7 +49,7 @@ export default class NewLoan extends React.Component {
   }
 
   handleChange(event, { name, value }) {
-    if (name !== 'files[]') {
+    if (name !== 'files[]' && name !== 'files') {
       this.setState({
         [name]: value,
       })
