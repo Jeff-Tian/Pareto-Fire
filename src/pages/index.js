@@ -10,7 +10,7 @@ const encode = (data) => {
   const formData = new FormData()
   Object.keys(data)
     .map(key => {
-      if (key === 'files') {
+      if (key === 'files' || key === 'images') {
         for (const file of data[key]) {
           formData.append(key, file, file.name)
         }
@@ -47,10 +47,10 @@ export default class NewLoan extends React.Component {
     }
   }
 
-  handleChange(event, { name }) {
+  handleChange(event, { id, name, value }) {
     if (name !== 'files') {
       this.setState({
-        [name]: event.target.value,
+        [name]: value,
       })
     } else {
       this.setState({
@@ -93,7 +93,12 @@ export default class NewLoan extends React.Component {
       this.setState({ loading: true })
       await window.fetch('/', {
         method: 'POST',
-        body: encode({ 'form-name': 'loan', ...this.state, userId: netlifyIdentity.currentUser().id }),
+        body: encode({
+          'form-name': 'loan', ...this.state,
+          'images': this.state.files,
+          userId: netlifyIdentity.currentUser().id,
+          files: [],
+        }),
       })
 
       alert('发布成功')
