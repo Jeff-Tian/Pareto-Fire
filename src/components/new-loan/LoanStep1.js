@@ -57,13 +57,14 @@ export default ({ howMuch, howLong, refundMethod, files, scheme, handleChange, g
     <Form.Field
       id='form-file-upload'
       name="files"
-      multiple
       control={Input}
+      multiple
       type="file"
       label='上传票据'
       placeholder='上传票据'
       onChange={handleChange}
     />
+    {files && files.map(f => <input key={f.name} readOnly={true} type="text" name="files" value={f.name}/>)}
     <ImagePreview images={files} deleteImage={deleteImage}/>
   </Form.Group>
   <input type="hidden" name="scheme" value={scheme}/>
