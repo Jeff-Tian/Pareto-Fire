@@ -27,6 +27,7 @@ export default class NewLoan extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.gotoNextStep = this.gotoNextStep.bind(this)
     this.selectScheme = this.selectScheme.bind(this)
+    this.deleteImage = this.deleteImage.bind(this)
 
     this.state = {
       howMuch: '',
@@ -46,16 +47,24 @@ export default class NewLoan extends React.Component {
     }
   }
 
-  handleChange(event, { id, name, value }) {
+  handleChange(event, { name }) {
     if (name !== 'files') {
       this.setState({
-        [name]: value,
+        [name]: event.target.value,
       })
     } else {
       this.setState({
-        [name]: document.getElementById(id).files,
+        [name]: [
+          ...this.state.files, ...Array.from(event.target.files),
+        ],
       })
     }
+  }
+
+  deleteImage(img) {
+    this.setState({
+      'files': this.state.files.filter(f => f !== img),
+    })
   }
 
   gotoNextStep(event) {
@@ -115,6 +124,7 @@ export default class NewLoan extends React.Component {
         <LoanStep1 howMuch={this.state.howMuch} howLong={this.state.howLong} refundMethod={this.state.refundMethod}
                    files={this.state.files}
                    scheme={this.state.scheme}
+                   deleteImage={this.deleteImage}
                    handleChange={this.handleChange} gotoNextStep={this.gotoNextStep}/>
       }
       {

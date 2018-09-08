@@ -1,12 +1,12 @@
 import { Button, Form, Icon, Input, Label, Select } from 'semantic-ui-react'
 import React from 'react'
+import ImagePreview from '../ImagePreview'
 
 function isBlank(value) {
   return value === '' || value === null
 }
 
-export default ({ howMuch, howLong, refundMethod, files, scheme, handleChange, gotoNextStep }) => <Form.Group
-  widths='equal'>
+export default ({ howMuch, howLong, refundMethod, files, scheme, handleChange, gotoNextStep, deleteImage }) => <div>
   <input type="hidden" name="userId"/>
   <Form.Field>
     <label>借多少</label>
@@ -53,16 +53,19 @@ export default ({ howMuch, howLong, refundMethod, files, scheme, handleChange, g
       key: 2, text: '先息后本', value: 2,
     }]}
   />
-  <Form.Field
-    id='form-file-upload'
-    name="files"
-    control={Input}
-    type="file"
-    multiple
-    label='上传票据'
-    placeholder='上传票据'
-    onChange={handleChange}
-  />
+  <Form.Group widths="equal">
+    <Form.Field
+      id='form-file-upload'
+      name="files"
+      multiple
+      control={Input}
+      type="file"
+      label='上传票据'
+      placeholder='上传票据'
+      onChange={handleChange}
+    />
+    <ImagePreview images={files} deleteImage={deleteImage}/>
+  </Form.Group>
   <input type="hidden" name="scheme" value={scheme}/>
   <Form.Field
     id='form-button-control-public'
@@ -72,4 +75,4 @@ export default ({ howMuch, howLong, refundMethod, files, scheme, handleChange, g
     onClick={gotoNextStep}
     icon labelPosition='right'
   >下一步<Icon name='right arrow'/></Form.Field>
-</Form.Group>
+</div>
