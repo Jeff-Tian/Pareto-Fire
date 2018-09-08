@@ -47,7 +47,7 @@ export default class NewLoan extends React.Component {
     }
   }
 
-  handleChange(event, { id, name, value }) {
+  handleChange(event, { name, value }) {
     if (name !== 'files[]') {
       this.setState({
         [name]: value,

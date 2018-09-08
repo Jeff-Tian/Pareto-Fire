@@ -53,19 +53,26 @@ export default ({ howMuch, howLong, refundMethod, files, scheme, handleChange, g
       key: 2, text: '先息后本', value: 2,
     }]}
   />
-  <Form.Group widths="equal">
-    <Form.Field
-      id='form-file-upload'
-      name="files[]"
-      control={Input}
-      multiple
-      type="file"
-      label='上传票据'
-      placeholder='上传票据'
-      onChange={handleChange}
-    />
+  <Form.Field
+    id='form-file-upload'
+    name="files[]"
+    control={Input}
+    type="file"
+    label='上传票据'
+    placeholder='上传票据'
+    onChange={handleChange}
+  />
+  <Form.Field
+    name="files[]"
+    control={Input}
+    type="file"
+    label='上传票据'
+    placeholder='上传票据'
+    onChange={handleChange}
+  />
+  <Form.Field>
     <ImagePreview images={files} deleteImage={deleteImage}/>
-  </Form.Group>
+  </Form.Field>
   <input type="hidden" name="scheme" value={scheme}/>
   <Form.Field
     id='form-button-control-public'
