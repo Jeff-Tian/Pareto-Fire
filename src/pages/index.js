@@ -7,9 +7,12 @@ import { push } from 'gatsby-link'
 import netlifyIdentity from 'netlify-identity-widget'
 
 const encode = (data) => {
-  return Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&')
+  const formData = new FormData()
+  Object.keys(data)
+    .map(key => {
+      formData.append(key, data[key])
+    })
+  return formData
 }
 export default class NewLoan extends React.Component {
   constructor(props) {
@@ -23,6 +26,7 @@ export default class NewLoan extends React.Component {
       howMuch: '',
       howLong: '',
       refundMethod: '',
+      files: [],
       scheme: '',
       step: 1,
     }
@@ -36,10 +40,16 @@ export default class NewLoan extends React.Component {
     }
   }
 
-  handleChange(event, { name, value }) {
-    this.setState({
-      [name]: value,
-    })
+  handleChange(event, { id, name, value }) {
+    if (name !== 'files') {
+      this.setState({
+        [name]: value,
+      })
+    } else {
+      this.setState({
+        [name]: document.getElementById(id).files,
+      })
+    }
   }
 
   gotoNextStep(event) {
@@ -67,7 +77,6 @@ export default class NewLoan extends React.Component {
     try {
       await window.fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encode({ 'form-name': 'loan', ...this.state, userId: netlifyIdentity.currentUser().id }),
       })
 
@@ -95,6 +104,7 @@ export default class NewLoan extends React.Component {
       {
         this.state.step === 1 &&
         <LoanStep1 howMuch={this.state.howMuch} howLong={this.state.howLong} refundMethod={this.state.refundMethod}
+                   files={this.state.files}
                    handleChange={this.handleChange} gotoNextStep={this.gotoNextStep}/>
       }
       {

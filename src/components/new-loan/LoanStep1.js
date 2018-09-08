@@ -1,7 +1,7 @@
 import { Button, Form, Icon, Input, Label, Select } from 'semantic-ui-react'
 import React from 'react'
 
-export default ({ howMuch, howLong, refundMethod, handleChange, gotoNextStep }) => <Form.Group widths='equal'>
+export default ({ howMuch, howLong, refundMethod, files, handleChange, gotoNextStep }) => <Form.Group widths='equal'>
   <Form.Field>
     <label>借多少</label>
     <Input labelPosition='right' type='number' placeholder='10000' name="howMuch" value={howMuch}
@@ -46,13 +46,14 @@ export default ({ howMuch, howLong, refundMethod, handleChange, gotoNextStep }) 
     }]}
   />
   <Form.Field
-    id='form-upload'
+    id='form-file-upload'
     name="files"
     control={Input}
     type="file"
     multiple
     label='上传票据'
     placeholder='上传票据'
+    onChange={handleChange}
   />
   <Form.Field
     id='form-button-control-public'
