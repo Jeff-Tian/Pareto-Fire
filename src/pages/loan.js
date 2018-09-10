@@ -1,6 +1,6 @@
 import React from 'react'
 import LoanCard from '../components/LoanCard'
-import { processLoan } from '../common/processLoan'
+import { processLoan } from '../common/functions'
 
 export default class LoanDetail extends React.Component {
   constructor(props) {

@@ -4,7 +4,7 @@ import 'regenerator-runtime/runtime'
 import moment from 'moment/moment'
 import CheckUser from '../components/CheckUser'
 import LoanCard from '../components/LoanCard'
-import { processLoan } from '../common/processLoan'
+import { processLoan } from '../common/functions'
 
 class HistoryPage extends React.Component {
   constructor(props) {

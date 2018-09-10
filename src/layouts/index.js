@@ -21,8 +21,8 @@ const Layout = ({ children, data }) => (
       <ParetoHeader siteTitle={data.site.siteMetadata.title} subtitle={data.site.siteMetadata.subtitle}/>
     </div>
     <div className="row content">
-      <div>
-        <Container style={{ paddingTop: '10px', paddingBottom: '10px' }}>
+      <div style={{ width: '100%' }}>
+        <Container fluid style={{ paddingTop: '10px', paddingBottom: '10px' }}>
           {children()}
         </Container>
       </div>
