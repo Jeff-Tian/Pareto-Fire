@@ -1,5 +1,6 @@
 import React from 'react'
 import { CitiClientId, CitiClientRedirect, CitiClientSecret } from '../common/constants'
+import 'regenerator-runtime/runtime'
 
 const encode = (data) => {
   return Object.keys(data)
