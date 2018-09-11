@@ -5,9 +5,16 @@ export default class Pay extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      amount: new window.URLSearchParams(window.location.search).get('amount'),
-      payingAmount: new window.URLSearchParams(window.location.search).get('amount'),
+    if (typeof window !== 'undefined') {
+      this.state = {
+        amount: new window.URLSearchParams(window.location.search).get('amount'),
+        payingAmount: new window.URLSearchParams(window.location.search).get('amount'),
+      }
+    } else {
+      this.state = {
+        amount: 0,
+        payingAmount: 0,
+      }
     }
 
     this.payWithPoints = this.payWithPoints.bind(this)
