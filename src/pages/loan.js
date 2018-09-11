@@ -11,7 +11,7 @@ export default class LoanDetail extends React.Component {
   }
 
   async componentDidMount() {
-    const loanId = new URLSearchParams(window.location.search).get('loan_id')
+    const loanId = new window.URLSearchParams(window.location.search).get('loan_id')
 
     this.setState({
       loan: await LoanService.getLoan(loanId),

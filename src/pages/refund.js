@@ -14,7 +14,7 @@ export default class Refund extends React.Component {
 
   async componentDidMount() {
     this.setState({
-      loan: await LoanService.getLoan(new URLSearchParams(window.location.search).get('loan_id')),
+      loan: await LoanService.getLoan(new window.URLSearchParams(window.location.search).get('loan_id')),
     })
   }
 

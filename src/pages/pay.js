@@ -6,8 +6,8 @@ export default class Pay extends React.Component {
     super(props)
 
     this.state = {
-      amount: new URLSearchParams(window.location.search).get('amount'),
-      payingAmount: new URLSearchParams(window.location.search).get('amount'),
+      amount: new window.URLSearchParams(window.location.search).get('amount'),
+      payingAmount: new window.URLSearchParams(window.location.search).get('amount'),
     }
 
     this.payWithPoints = this.payWithPoints.bind(this)
@@ -15,8 +15,8 @@ export default class Pay extends React.Component {
 
   payWithPoints() {
     this.setState({
-      amount: Number(new URLSearchParams(window.location.search).get('amount')) - 200,
-      payingAmount: new URLSearchParams(window.location.search).get('amount') - 200,
+      amount: Number(new window.URLSearchParams(window.location.search).get('amount')) - 200,
+      payingAmount: new window.URLSearchParams(window.location.search).get('amount') - 200,
     })
   }
 
