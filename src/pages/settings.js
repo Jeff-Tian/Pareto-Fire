@@ -1,7 +1,8 @@
 import React from 'react'
-import { Button, Container, Item, Label } from 'semantic-ui-react'
+import { Item } from 'semantic-ui-react'
 import CheckUser from '../components/CheckUser'
 import moment from 'moment'
+import 'regenerator-runtime/runtime'
 
 const gravatar = require('gravatar')
 
