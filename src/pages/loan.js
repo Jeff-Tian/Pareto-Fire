@@ -23,7 +23,10 @@ export default class LoanDetail extends React.Component {
       {this.state.loan && <LoanCard loan={this.state.loan}/>}
       <p>
         <Link to="/">查看电子合同</Link>
-        <Button color="red" floated="right" as={Link} to={`/refund?loan_id=${this.state.loan.id}`}>还款</Button>
+        {
+          this.state.loan &&
+          <Button color="red" floated="right" as={Link} to={`/refund?loan_id=${this.state.loan.id}`}>还款</Button>
+        }
       </p>
 
     </div>
