@@ -7,6 +7,10 @@ export default class CheckUser {
     })
   }
 
+  static getCurrentUser() {
+    return netlifyIdentity.currentUser()
+  }
+
   static checkUser() {
     const user = netlifyIdentity.currentUser()
     if (!user) {

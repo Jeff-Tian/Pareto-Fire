@@ -8,6 +8,7 @@
     "gatsby": "^1.9.277",
     "gatsby-link": "^1.6.46",
     "gatsby-plugin-react-helmet": "^2.0.11",
+    "gravatar": "^1.6.0",
     "moment": "latest",
     "netlify-identity-widget": "^1.4.14",
     "react": "latest",
