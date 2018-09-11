@@ -5,8 +5,8 @@ import ImagePreview from './ImagePreview'
 import React from 'react'
 import { LoanSchemes } from '../common/constants'
 
-export default ({ loan }) => <Card as={Link} fluid color='red'
-                                   to={`/loan?loan_id=${loan.id}`}>
+export default ({ loan }) => loan ? <Card as={Link} fluid color='red'
+                                          to={`/loan?loan_id=${loan.id}`}>
   <Card.Content>
     <Card.Header>{`￥ ${loan.data.howMuch} 元`}</Card.Header>
     <Card.Meta>{moment(loan.created_at).fromNow()}</Card.Meta>
@@ -15,4 +15,4 @@ export default ({ loan }) => <Card as={Link} fluid color='red'
   <Card.Content>
     <ImagePreview images={loan.files}/>
   </Card.Content>
-</Card>
+</Card> : null
