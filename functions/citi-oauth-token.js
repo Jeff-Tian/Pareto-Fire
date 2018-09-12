@@ -6,9 +6,9 @@ const API_ENDPOINT = 'https://sandbox.apihub.citi.com/gcb/api/clientCredentials/
 
 exports.handler = async (event, context, callback) => {
   let headers = {
-    accept: 'application/json',
-    authorization: `Basic ${Buffer.from(`${CitiClientId}:${CitiClientSecret}`).toString('base64')}`,
-    contentType: 'application/x-www-form-urlencoded',
+    'Accept': 'application/json',
+    Authorization: `Basic ${Buffer.from(`${CitiClientId}:${CitiClientSecret}`).toString('base64')}`,
+    'Content-Type': 'application/x-www-form-urlencoded',
   }
   let body = {
     grant_type: 'authorization_code',
