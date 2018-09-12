@@ -7,7 +7,7 @@ const API_ENDPOINT = 'https://sandbox.apihub.citi.com/gcb/api/clientCredentials/
 exports.handler = async (event, context, callback) => {
   let headers = {
     accept: 'application/json',
-    authorization: Buffer.from(`Basic ${CitiClientId}:${CitiClientSecret}`).toString('base64'),
+    authorization: `Basic ${Buffer.from(`${CitiClientId}:${CitiClientSecret}`).toString('base64')}`,
     contentType: 'application/x-www-form-urlencoded',
   }
   let body = {
@@ -30,10 +30,10 @@ exports.handler = async (event, context, callback) => {
       } else {
         return {
           statusCode: 423,
-          body: {
-            params: JSON.stringify({ headers, body }),
-            upstream: JSON.stringify(data),
-          },
+          body: JSON.stringify({
+            params: { headers, body },
+            upstream: data,
+          }),
         }
       }
     })
