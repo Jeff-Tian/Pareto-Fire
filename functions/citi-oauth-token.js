@@ -9,7 +9,7 @@ exports.handler = async (event, context, callback) => {
     method: 'POST',
     headers: {
       accept: 'application/json',
-      authorization: Buffer.from(`${CitiClientId}:${CitiClientSecret}`).toString('base64'),
+      authorization: Buffer.from(`Basic ${CitiClientId}:${CitiClientSecret}`).toString('base64'),
       contentType: 'application/x-www-form-urlencoded',
     },
     body: qs.stringify({

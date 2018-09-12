@@ -19,7 +19,7 @@ export default class CitiOAuth extends React.Component {
     const code = new window.URLSearchParams(window.location.search).get('code')
 
     const res = await window.fetch(`/.netlify/functions/citi-oauth-token?code=${code}`)
-    
+
     console.log('res = ', res, await res.json())
   }
 
