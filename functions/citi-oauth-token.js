@@ -13,7 +13,7 @@ exports.handler = async (event, context, callback) => {
   let body = {
     grant_type: 'authorization_code',
     code: event.queryStringParameters.code,
-    redirect_uri: encodeURIComponent(CitiClientRedirect),
+    redirect_uri: CitiClientRedirect,
   }
   return fetch(API_ENDPOINT, {
     method: 'POST',
