@@ -18,7 +18,7 @@ export default class CitiOAuth extends React.Component {
   async componentDidMount() {
     const code = new window.URLSearchParams(window.location.search).get('code')
 
-    const a = await window.fetch('/.netlify/functions/proxy?uri=' + encodeURIComponent('https://sandbox.apihub.citi.com/gcb/api/clientCredentials/oauth2/token/us/gcb'), {
+    const a = await window.fetch('/.netlify/functions/service-proxy?uri=' + encodeURIComponent('https://sandbox.apihub.citi.com/gcb/api/clientCredentials/oauth2/token/us/gcb'), {
       method: 'POST',
       headers: {
         accept: 'application/json',
