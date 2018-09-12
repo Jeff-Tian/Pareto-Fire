@@ -4,7 +4,7 @@ import 'regenerator-runtime/runtime'
 import LoanStep1 from '../components/new-loan/LoanStep1'
 import LoanStep2 from '../components/new-loan/LoanStep2'
 import { push } from 'gatsby-link'
-import netlifyIdentity from 'netlify-identity-widget'
+import CheckUser from '../components/CheckUser'
 
 const encode = (data) => {
   const formData = new FormData()
@@ -37,14 +37,6 @@ export default class NewLoan extends React.Component {
       files: [],
       scheme: '',
       step: 1,
-    }
-  }
-
-  static checkUser() {
-    const user = netlifyIdentity.currentUser()
-    if (!user) {
-      netlifyIdentity.open()
-      netlifyIdentity.on('close', NewLoan.checkUser)
     }
   }
 
@@ -92,17 +84,19 @@ export default class NewLoan extends React.Component {
     event.preventDefault()
     try {
       this.setState({ loading: true })
-      await window.fetch('/', {
+      const res = await window.fetch('/', {
         method: 'POST',
         body: encode({
           'form-name': 'loan',
           ...this.state,
-          userId: netlifyIdentity.currentUser().id,
+          userId: CheckUser.getCurrentUser().id,
         }),
       })
 
+      const json = await res.json()
+
       alert('发布成功')
-      push('/history')
+      push('/loan?id=' + json.id)
     } catch (ex) {
       console.error(ex)
     } finally {
@@ -111,11 +105,8 @@ export default class NewLoan extends React.Component {
   }
 
   componentDidMount() {
-    netlifyIdentity.init({
-      container: 'body', // defaults to document.body,
-    })
-
-    NewLoan.checkUser()
+    CheckUser.init()
+    CheckUser.checkUser('/settings')
   }
 
   render() {

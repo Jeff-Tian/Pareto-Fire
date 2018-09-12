@@ -1,5 +1,5 @@
 import React from 'react'
-import { Item } from 'semantic-ui-react'
+import { Button, Item } from 'semantic-ui-react'
 import CheckUser from '../components/CheckUser'
 import moment from 'moment'
 import 'regenerator-runtime/runtime'
@@ -12,13 +12,19 @@ export default class Settings extends React.Component {
 
     this.state = { user: null }
     moment.locale('zh-CN')
+
+    this.logout = this.logout.bind(this)
   }
 
   async componentDidMount() {
     CheckUser.init()
-    const user = CheckUser.checkUser()
+    const user = CheckUser.checkUser('/')
 
     this.setState({ user: user })
+  }
+
+  logout() {
+    CheckUser.logout()
   }
 
   render() {
@@ -37,8 +43,7 @@ export default class Settings extends React.Component {
             <Item.Extra>
               <a className="ui facebook button"
                  href={`https://sandbox.apihub.citi.com/gcb/api/authCode/oauth2/authorize?response_type=code&client_id=61e8bab0-a650-4dd6-818d-245e220798b7&scope=customers_profiles&countryCode=US&businessCode=GCB&locale=en_US&state=opaqueStateValue&redirect_uri=https://fire.pa-pa.me/citi-oauth`}>绑定花旗账号</a>
-              {/*<Label>IMAX</Label>*/}
-              {/*<Label icon='globe' content='Additional Languages'/>*/}
+              <Button color="red" onClick={this.logout}>退出登录</Button>
             </Item.Extra>
           </Item.Content>
         </Item>

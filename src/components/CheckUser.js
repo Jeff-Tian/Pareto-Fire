@@ -1,4 +1,5 @@
 import netlifyIdentity from 'netlify-identity-widget'
+import { push } from 'gatsby-link'
 
 export default class CheckUser {
   static init() {
@@ -11,13 +12,23 @@ export default class CheckUser {
     return netlifyIdentity.currentUser()
   }
 
-  static checkUser() {
+  static checkUser(returnUrl) {
     const user = netlifyIdentity.currentUser()
     if (!user) {
       netlifyIdentity.open()
+      if (returnUrl) {
+        netlifyIdentity.on('login', user => {
+          push(returnUrl)
+        })
+      }
       netlifyIdentity.on('close', CheckUser.checkUser)
     }
 
     return user
+  }
+
+  static logout() {
+    netlifyIdentity.logout()
+    netlifyIdentity.open()
   }
 }
