@@ -10,17 +10,20 @@ exports.handler = async (event, context, callback) => {
     const { uri } = event.queryStringParameters
     const body = querystring.parse(event.body)
 
-    callback(null, {
+    return {
       statusCode: 200,
       uri: uri,
       user: user,
       identity: identity,
       body: body,
-    })
+    }
   } catch (ex) {
     console.log('error:', ex)
     console.error(ex)
 
-    callback(ex)
+    return {
+      statusCode: 422,
+      body: ex,
+    }
   }
 }
