@@ -11,6 +11,7 @@
     "gravatar": "^1.6.0",
     "moment": "latest",
     "netlify-identity-widget": "^1.4.14",
+    "netlify-lambda": "^0.4.0",
     "react": "latest",
     "react-helmet": "^5.2.0",
     "semantic-ui-css": "^2.3.3",
