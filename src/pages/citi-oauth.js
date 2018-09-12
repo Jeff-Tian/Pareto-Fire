@@ -18,7 +18,19 @@ export default class CitiOAuth extends React.Component {
   async componentDidMount() {
     const code = new window.URLSearchParams(window.location.search).get('code')
 
-    const a = await window.fetch('/.netlify/functions/service-proxy')
+    const a = await window.fetch('/.netlify/functions/service-proxy?uri=' + encodeURIComponent('https://sandbox.apihub.citi.com/gcb/api/clientCredentials/oauth2/token/us/gcb'), {
+      method: 'POST',
+      headers: {
+        accept: 'application/json',
+        authorization: btoa(`${CitiClientId}:${CitiClientSecret}`),
+        contentType: 'application/x-www-form-urlencoded',
+      },
+      body: encode({
+        grant_type: 'authorization_code',
+        code: code,
+        redirect_uri: CitiClientRedirect,
+      }),
+    })
     console.log('a = ', a, a.json())
 
     const res = await window.fetch('https://sandbox.apihub.citi.com/gcb/api/clientCredentials/oauth2/token/us/gcb', {
