@@ -15,7 +15,7 @@ exports.handler = async (event, context, callback) => {
     body: qs.stringify({
       grant_type: 'authorization_code',
       code: event.queryStringParameters.code,
-      redirect_uri: CitiClientRedirect,
+      redirect_uri: encodeURIComponent(CitiClientRedirect),
     }),
   })
     .then(response => response.json())
