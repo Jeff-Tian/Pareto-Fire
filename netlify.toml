@@ -1,4 +1,3 @@
 [build]
     Command = 'yarn build && yarn build:lambda'
     Functions = ".netlify/functions"
-    Publish = "build"
