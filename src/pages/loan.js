@@ -23,6 +23,8 @@ export default class LoanDetail extends React.Component {
         isMe: !!CheckUser.getCurrentUser(),
       })
     } catch (ex) {
+      alert('发生了错误：' + ex.toString())
+    } finally {
       this.setState({ loading: false })
     }
   }
