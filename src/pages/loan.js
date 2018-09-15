@@ -8,7 +8,7 @@ import CheckUser from '../components/CheckUser'
 export default class LoanDetail extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { loan: null, confirmed: new window.URLSearchParams(window.location.search).get('confirmed') }
+    this.state = { loan: null }
   }
 
   async componentDidMount() {
@@ -16,6 +16,7 @@ export default class LoanDetail extends React.Component {
 
     this.setState({
       loan: await LoanService.getLoan(loanId),
+      confirmed: new window.URLSearchParams(window.location.search).get('confirmed'),
     })
   }
 

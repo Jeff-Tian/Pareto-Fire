@@ -4,7 +4,7 @@ import 'regenerator-runtime/runtime'
 import moment from 'moment/moment'
 import CheckUser from '../components/CheckUser'
 import LoanCard from '../components/LoanCard'
-import API from '../common/api'
+import LoanService from '../service/loan'
 
 class HistoryPage extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class HistoryPage extends React.Component {
     this.setState({ loading: true })
     try {
       this.setState({
-        history: await API.getHistory(user),
+        history: await LoanService.getHistory(user),
       })
     } catch (ex) {
       console.error(ex)
