@@ -12,18 +12,22 @@ export default class LoanDetail extends React.Component {
   }
 
   async componentDidMount() {
+    CheckUser.init()
     const loanId = new window.URLSearchParams(window.location.search).get('loan_id')
+
+    console.log('is me = ', CheckUser.getCurrentUser())
 
     this.setState({
       loan: await LoanService.getLoan(loanId),
       confirmed: new window.URLSearchParams(window.location.search).get('confirmed'),
+      isMe: !!CheckUser.getCurrentUser(),
     })
   }
 
   render() {
     return <div>
       {
-        !CheckUser.getCurrentUser() &&
+        !this.state.isMe &&
         <Header as="h3">
           您的合作伙伴正在向银行申请一笔借款，需要您的确认：
         </Header>
@@ -37,14 +41,14 @@ export default class LoanDetail extends React.Component {
         }
       </p>
       {
-        CheckUser.getCurrentUser()
+        this.state.isMe
           ? (this.state.loan && !this.state.confirmed
           ? <p>请将此页分享给供应商/客户确认，确认后您的借款申请将被发送到融资方</p>
           : <p>您的此次借款申请已获批，请按时还款。</p>)
           : ''
       }
       {
-        !CheckUser.getCurrentUser() &&
+        !this.state.isMe &&
         <Button.Group size='huge'>
           <Button>拒绝</Button>
           <Button.Or/>
