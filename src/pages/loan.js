@@ -29,6 +29,10 @@ export default class LoanDetail extends React.Component {
     }
   }
 
+  confirmLoan() {
+    alert('该笔借款已确认，银行将收到此借款请求。')
+  }
+
   render() {
     return this.state.loading
       ? <Segment loading>
@@ -65,7 +69,7 @@ export default class LoanDetail extends React.Component {
           <Button.Group size='huge'>
             <Button>拒绝</Button>
             <Button.Or/>
-            <Button color="red">确认</Button>
+            <Button color="red" onClick={this.confirmLoan.bind(this)}>确认</Button>
           </Button.Group>
         }
       </div>
