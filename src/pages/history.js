@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from 'semantic-ui-react'
+import { Card, Segment } from 'semantic-ui-react'
 import 'regenerator-runtime/runtime'
 import moment from 'moment/moment'
 import CheckUser from '../components/CheckUser'
@@ -34,12 +34,20 @@ class HistoryPage extends React.Component {
   }
 
   render() {
-    return <Card.Group>
-      {
-        this.state.history.map(s => <LoanCard loan={s} key={s.id}/>,
-        )
-      }
-    </Card.Group>
+    return this.state.loading
+      ? <Segment loading>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+      </Segment>
+      : <Card.Group>
+        {
+          this.state.history.map(s => <LoanCard loan={s} key={s.id}/>,
+          )
+        }
+      </Card.Group>
   }
 }
 
