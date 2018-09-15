@@ -5,6 +5,7 @@ import LoanStep1 from '../components/new-loan/LoanStep1'
 import LoanStep2 from '../components/new-loan/LoanStep2'
 import { push } from 'gatsby-link'
 import CheckUser from '../components/CheckUser'
+import API from '../common/api'
 
 const encode = (data) => {
   const formData = new FormData()
@@ -93,10 +94,9 @@ export default class NewLoan extends React.Component {
         }),
       })
 
-      const json = await res.json()
-
       alert('发布成功')
-      push('/loan?id=' + json.id)
+      const history = await API.getHistory(CheckUser.getCurrentUser())
+      push('/loan?loan_id=' + history[0].id)
     } catch (ex) {
       console.error(ex)
     } finally {

@@ -4,7 +4,7 @@ import 'regenerator-runtime/runtime'
 import moment from 'moment/moment'
 import CheckUser from '../components/CheckUser'
 import LoanCard from '../components/LoanCard'
-import { processLoan } from '../common/functions'
+import API from '../common/api'
 
 class HistoryPage extends React.Component {
   constructor(props) {
@@ -23,10 +23,8 @@ class HistoryPage extends React.Component {
 
     this.setState({ loading: true })
     try {
-      let res = await window.fetch(`https://api.netlify.com/api/v1/submissions?access_token=d0fb464bf842b9f97a361a8077893483a4dcf20837cf4cc679f22ef0eebea81d`)
-
       this.setState({
-        history: (await res.json()).filter(loan => loan.data.userId === user.id).map(processLoan),
+        history: await API.getHistory(user),
       })
     } catch (ex) {
       console.error(ex)
