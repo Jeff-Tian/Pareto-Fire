@@ -18,6 +18,7 @@ export default class CheckUser {
       netlifyIdentity.open()
       if (returnUrl) {
         netlifyIdentity.on('login', user => {
+          netlifyIdentity.close()
           push(returnUrl)
         })
       }
