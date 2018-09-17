@@ -33,6 +33,7 @@ exports.handler = async (event, context, callback) => {
           body: JSON.stringify({
             params: { headers, body },
             upstream: data,
+            body: qs.stringify(body),
           }),
         }
       }
