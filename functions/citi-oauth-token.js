@@ -2,7 +2,7 @@ import qs from 'querystring'
 import fetch from 'node-fetch'
 import { CitiClientId, CitiClientRedirect, CitiClientSecret } from '../src/common/constants'
 
-const API_ENDPOINT = 'https://sandbox.apihub.citi.com/gcb/api/clientCredentials/oauth2/token/us/gcb'
+const API_ENDPOINT = 'https://sandbox.apihub.citi.com/gcb/api/clientCredentials/oauth2/token/au/gcb'
 
 exports.handler = async (event, context, callback) => {
   let headers = {
