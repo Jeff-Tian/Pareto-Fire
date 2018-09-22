@@ -17,7 +17,7 @@ exports.handler = async (event, context, callback) => {
   }
   return fetch(API_ENDPOINT, {
     method: 'POST',
-    headers: headers,
+    headers: new Headers(headers),
     body: qs.stringify(body),
   })
     .then(response => response.json())
