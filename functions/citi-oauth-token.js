@@ -1,15 +1,16 @@
 import qs from 'querystring'
-import fetch, {Headers} from 'node-fetch'
+import fetch, { Headers } from 'node-fetch'
 import { CitiClientId, CitiClientRedirect, CitiClientSecret } from '../src/common/constants'
 
-const API_ENDPOINT = 'https://sandbox.apihub.citi.com/gcb/api/clientCredentials/oauth2/token/au/gcb'
+const API_ENDPOINT = 'https://sandbox.apihub.citi.com/gcb/api/authCode/oauth2/token/au/gcb'
 
 exports.handler = async (event, context, callback) => {
-  let headers = {
+  let headers = new Headers({
     'Accept': 'application/json',
     Authorization: `Basic ${Buffer.from(`${CitiClientId}:${CitiClientSecret}`).toString('base64')}`,
     'Content-Type': 'application/x-www-form-urlencoded',
-  }
+  })
+
   let body = {
     grant_type: 'authorization_code',
     code: event.queryStringParameters.code,
@@ -17,7 +18,7 @@ exports.handler = async (event, context, callback) => {
   }
   return fetch(API_ENDPOINT, {
     method: 'POST',
-    headers: new Headers(headers),
+    headers: headers,
     body: qs.stringify(body),
   })
     .then(response => response.json())
