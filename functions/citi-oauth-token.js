@@ -1,5 +1,5 @@
 import qs from 'querystring'
-import fetch from 'node-fetch'
+import fetch, {Headers} from 'node-fetch'
 import { CitiClientId, CitiClientRedirect, CitiClientSecret } from '../src/common/constants'
 
 const API_ENDPOINT = 'https://sandbox.apihub.citi.com/gcb/api/clientCredentials/oauth2/token/au/gcb'
