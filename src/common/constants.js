@@ -18,4 +18,4 @@ export const LoanSchemes = {
 
 export const CitiClientId = '61e8bab0-a650-4dd6-818d-245e220798b7'
 export const CitiClientSecret = 'lT5oI2kY4hN8gT1fP0hD3qT2yK2qR7uA1jW0sS1pA0kB4xN4nB'
-export const CitiClientRedirect = 'https://fire.pa-pa.me/citi-oauth'
+export const CitiClientRedirect = 'https://fire.pa-pa.me/.netlify/functions/bind-citi-account'

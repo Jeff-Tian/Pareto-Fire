@@ -12,11 +12,12 @@
     "moment": "latest",
     "netlify-identity-widget": "^1.4.14",
     "netlify-lambda": "^0.4.0",
+    "node-fetch": "latest",
     "react": "latest",
     "react-helmet": "^5.2.0",
     "semantic-ui-css": "^2.3.3",
     "semantic-ui-react": "^0.82.3",
-    "node-fetch": "latest"
+    "uuid": "^3.3.2"
   },
   "keywords": [
     "gatsby"
