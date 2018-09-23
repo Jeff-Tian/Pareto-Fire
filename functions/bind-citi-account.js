@@ -25,7 +25,7 @@ exports.handler = async (event, context, callback) => {
     .then(response => response.json())
     .then(data => {
       if (data.access_token) {
-        return fetch('', {
+        return fetch('https://sandbox.apihub.citi.com/gcb/api/v1/customers/profiles', {
           method: 'GET',
           headers: new Headers({
             'Accept': 'application/json',
