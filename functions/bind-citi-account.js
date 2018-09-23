@@ -34,7 +34,13 @@ exports.handler = async (event, context, callback) => {
             'uuid': uuid(),
             client_id: CitiClientId,
           }),
-        })
+        }).then(response => response.json())
+          .then(data => {
+            return {
+              statusCode: 200,
+              body: JSON.stringify(data),
+            }
+          })
       } else {
         return {
           statusCode: 423,
