@@ -4,17 +4,22 @@
   "version": "1.0.0",
   "author": "Jeff Tian <jeff.tian@outlook.com>",
   "dependencies": {
+    "babel-core": "^6.26.3",
     "babel-plugin-transform-regenerator": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "gatsby": "^1.9.277",
     "gatsby-link": "^1.6.46",
     "gatsby-plugin-react-helmet": "^2.0.11",
     "gravatar": "^1.6.0",
+    "intelli-espower-loader": "^1.0.1",
     "moment": "latest",
     "netlify-identity-widget": "^1.4.14",
     "netlify-lambda": "^0.4.0",
     "node-fetch": "latest",
+    "power-assert": "^1.6.1",
     "react": "latest",
     "react-helmet": "^5.2.0",
+    "redis": "^2.8.0",
     "semantic-ui-css": "^2.3.3",
     "semantic-ui-react": "^0.82.3",
     "uuid": "^3.3.2"
@@ -29,7 +34,7 @@
     "develop": "gatsby develop",
     "start:lambda": "netlify-lambda serve functions",
     "format": "prettier --write 'src/**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --require intelli-espower-loader --exit test/**/*.test.js"
   },
   "proxy": {
     "/.netlify/functions": {
@@ -45,5 +50,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/citi-fair/Pareto-Fire"
+  },
+  "directories": {
+    "test": "test"
   }
 }
