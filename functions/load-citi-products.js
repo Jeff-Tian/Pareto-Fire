@@ -47,7 +47,7 @@ exports.handler = async (event, context, callback) => {
   console.log('getting products with accessToekn = ', accessToken)
   let headers = new Headers({
     'accept': 'application/json',
-    authorization: `Beare ${accessToken}`,
+    authorization: `Bearer ${accessToken}`,
     client_id: CitiClientId,
     nextstartindex: null,
     uuid: uuid(),
