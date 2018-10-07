@@ -10,11 +10,15 @@ const API_ENDPOINT = 'https://sandbox.apihub.citi.com/gcb/api/v1/apac/onboarding
 
 exports.handler = async (event, context, callback) => {
   let userId = event.queryStringParameters.userId
+  console.log(`getting access token for ${userId}...`)
   let accessToken = await Redis.get(`oauth-${userId}`)
   if (accessToken) {
     accessToken = JSON.parse(accessToken).access_token
+    console.log(`access token of ${userId} is ${accessToken}`)
   } else {
+    console.log(`getting refresh token for ${userId}`)
     const refreshToken = await Redis.get(`refresh-${userId}`)
+    console.log(`refresh token of ${userId} is ${refreshToken}`)
 
     if (refreshToken) {
       const ENDPOINT = 'https://sandbox.apihub.citi.com/gcb/api/authCode/oauth2/refresh'
@@ -33,12 +37,14 @@ exports.handler = async (event, context, callback) => {
       }).then(r => r.json())
 
       accessToken = result.access_token
+      console.log('refreshed access token result = ', result)
 
       await Redis.set(`oauth-${userId}`, JSON.stringify(result), result.expires_in)
       await Redis.set(`refresh-${userId}`, result.refresh_token, result.expires_in)
     }
   }
 
+  console.log('getting products with accessToekn = ', accessToken)
   let headers = new Headers({
     'accept': 'application/json',
     authorization: `Beare ${accessToken}`,
