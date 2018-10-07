@@ -2,6 +2,8 @@ import qs from 'querystring'
 import fetch, { Headers } from 'node-fetch'
 import { CitiClientId, CitiClientRedirect, CitiClientSecret } from '../src/common/constants'
 
+const Redis = require('../functions/redis')
+
 const API_ENDPOINT = 'https://sandbox.apihub.citi.com/gcb/api/authCode/oauth2/token/au/gcb'
 
 exports.handler = async (event, context, callback) => {
@@ -22,8 +24,10 @@ exports.handler = async (event, context, callback) => {
     body: qs.stringify(body),
   })
     .then(response => response.json())
-    .then(data => {
+    .then(async (data) => {
       if (data.access_token) {
+        await Redis.set('key', JSON.stringify(data), 100)
+
         return {
           statusCode: 200,
           body: JSON.stringify(data),
