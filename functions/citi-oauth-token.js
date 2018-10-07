@@ -26,8 +26,6 @@ exports.handler = async (event, context, callback) => {
     .then(response => response.json())
     .then(async (data) => {
       if (data.access_token) {
-        await Redis.set('key', JSON.stringify(data), 100)
-
         return {
           statusCode: 200,
           body: JSON.stringify(data),
