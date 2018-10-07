@@ -20,10 +20,8 @@ export default class Settings extends React.Component {
   async componentDidMount() {
     CheckUser.init()
     const user = CheckUser.checkUser('/')
-
-    await this.loadCitiProducts()
-
     this.setState({ user: user })
+    await this.loadCitiProducts()
   }
 
   async loadCitiProducts() {
