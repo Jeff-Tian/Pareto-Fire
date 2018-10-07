@@ -27,10 +27,8 @@ exports.handler = async (event, context, callback) => {
     .then(response => response.json())
     .then(async (data) => {
       if (data.access_token) {
-        await Redis.set('key', JSON.stringify(data), 100)
-
         let userId = event.queryStringParameters.state
-        // saveAccessTokenToRedis(`oauth-${userId}`, data)
+        await Redis.set(`oauth-${userId}`, JSON.stringify(data), data.expires_in)
 
         return fetch('https://sandbox.apihub.citi.com/gcb/api/v1/customers/profiles', {
           method: 'GET',
