@@ -22,10 +22,15 @@ export default class Settings extends React.Component {
     const user = CheckUser.checkUser('/')
     this.setState({ user: user })
     await this.loadCitiProducts(user.id)
+    await this.loadCitiAccountInfo(user.id)
   }
 
   async loadCitiProducts(userId) {
     await fetch(`/.netlify/functions/load-citi-products?userId=${userId}`)
+  }
+
+  async loadCitiAccountInfo(userId) {
+    await fetch(`/.netlify/functions/load-citi-account-info?userId=${userId}`)
   }
 
   logout() {
